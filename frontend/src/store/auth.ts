@@ -1,16 +1,16 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
 type State = {
-    access: String;
-    refresh: String;
-    isAuth: Boolean;
+    access: string;
+    refresh: string;
+    isAuth: boolean;
 }
 
 type Actions = {
-    setToken: (access: String, refresh: string) => void;
+    setToken: (access: string, refresh: string) => void;
     logout: () => void;
-}
+};
 
 export const useAuthStore = create(
     persist<State & Actions>(
@@ -18,16 +18,16 @@ export const useAuthStore = create(
             access: '',
             refresh: '',
             isAuth: false,
-            setToken: (access: String, refresh: String) =>
+            setToken: (access: string, refresh: string) => 
                 set(() => ({
                     access,
                     refresh,
                     isAuth: !!access && !!refresh,
                 })),
-            logout: () => set(() => ({ access: '', refresh: '', isAuth: false })),
+                logout: () => set(() => ({ access: '', refresh: '', isAuth: false })),
         }),
         {
-            name: 'Auth'
+            name: "auth"
         }
     )
-)
+);

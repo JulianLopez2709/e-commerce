@@ -4,6 +4,9 @@ import  Layout from "./components/Layout"
 import HomePage from './page/HomePage'
 import LoginPage from './page/LoginPage'
 import RegisterPage from './page/RegisterPage'
+import AdminPage from './page/AdminPage'
+
+AdminPage
 
 function App() {
 
@@ -15,6 +18,7 @@ function App() {
               <Route index element={<HomePage/>}></Route>
               <Route path='/login' element={<LoginPage/>}></Route>
               <Route path='/register' element={<RegisterPage/>}></Route>
+              <Route path='/admin' element={<AdminPage/>}></Route>
             </Route>
           </Routes>
       </BrowserRouter>

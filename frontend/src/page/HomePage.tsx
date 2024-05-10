@@ -1,4 +1,4 @@
-import { get_produts } from '../api/product'
+import { get_produts } from '../api/products'
 import { Product } from '../Interfaces'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'

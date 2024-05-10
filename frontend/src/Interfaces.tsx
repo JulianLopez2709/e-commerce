@@ -11,7 +11,12 @@ export interface Product {
     num_reviews?: number
 }
 
-
 export interface Token {
-    exp: number
-}
+    user_id: number;
+    exp: number;
+    is_staff: boolean;
+    email: string;
+    name: string;
+    last_name: string;
+    avatar: File | null;
+};

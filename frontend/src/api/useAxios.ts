@@ -1,23 +1,24 @@
 import axios, { AxiosRequestHeaders } from "axios";
 import { useAuthStore } from "../store/auth";
 import jwt_decode from "jwt-decode";
-import { Token } from "../Interfaces";
+import  {Token} from '../Interfaces'
 
-function logout() {
+function logout(){
     useAuthStore.getState().logout()
     window.location.href = '/login'
 }
 
-const baseURL = import.meta.env.VITE_BACKEND_URL
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 export const axi = axios.create({
     baseURL
-});
+})
+
 
 export const authAxios = axios.create({
     baseURL,
     withCredentials: true
-});
+})
 
 authAxios.interceptors.request.use(async (config) => {
     const token: string = useAuthStore.getState().access;
@@ -40,3 +41,4 @@ authAxios.interceptors.request.use(async (config) => {
         }
         return config
 });
+
