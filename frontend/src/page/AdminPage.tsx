@@ -3,12 +3,12 @@ import { useState } from "react";
 import Products from "../components/Products";
 import Orders from "../components/Orders";
 import Users from "../components/Users";
+import { useQuery } from "@tanstack/react-query";
 
 function AdminPage() {
 
     const [show, setShow] = useState(0);
     const [search, setSearch] = useState("");
-
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">

@@ -25,7 +25,6 @@ def get_product(req,name):
 
 @api_view(['POST'])
 def create_product(request):
-    print(request.user)
     if request.user.is_staff:
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():

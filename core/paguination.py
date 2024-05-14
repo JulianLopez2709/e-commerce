@@ -1,20 +1,21 @@
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
+
 class CustomPagination(PageNumberPagination):
     page_size = 9
-    page_size_query_param ='page_size'
+    page_size_query_param = 'page_size'
     max_page_size = 9
     page_query_param = 'page'
 
-    def get_pagitated_response(self,data):
+    def get_paginated_response(self, data):
         return Response({
-            'data':data,
-            'meta':{
-                'next':self.page_next_page_number()
+            'data': data,
+            'meta': {
+                'next': self.page.next_page_number()
                 if self.page.has_next() else None,
-                'previos':self.page.previous_page_number()
+                'previous': self.page.previous_page_number()
                 if self.page.has_previous() else None,
-                'count':self.page.paginator.count
-            }
+                'count': self.page.paginator.count,
+                }
         })

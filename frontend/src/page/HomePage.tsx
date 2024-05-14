@@ -1,17 +1,18 @@
-import { get_produts } from '../api/products'
+import { get_products } from '../api/products'
 import { Product } from '../Interfaces'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useInView } from "react-intersection-observer";
 import ProductCard from '../components/ProductCard';
+import Loading from '../components/Loader'
 
 function HomePage() {
   const { ref, inView } = useInView();
 
   const { data, isLoading, error, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery(
     ['product'],
-    get_produts,
+    get_products,
     {
       getNextPageParam: (page: any) => page.meta.next
     }
@@ -55,7 +56,7 @@ function HomePage() {
                         hasNextPage && (
                             <div ref={ref}>
                                 {isLoading || isFetchingNextPage ? (
-                                    <p>Loading...</p>
+                                    <Loading/>
                                 ) : null}
                             </div>
                         )}

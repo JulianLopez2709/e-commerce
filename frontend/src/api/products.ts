@@ -1,8 +1,12 @@
 import { Product } from "../Interfaces";
 import { authAxios, axi } from "./useAxios";
-
-export const get_produts = async ({pageParam = 1})=>{
+export const get_products = async ({pageParam = 1})=>{
     const res = await axi.get(`/products/?page=${pageParam}&pages=9`)
+    return res.data
+}
+
+export const delete_product = async (id:number)=>{
+    const res = await axi.delete(`/products/delete/${id}/`)
     return res.data
 }
 
